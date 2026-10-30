@@ -1,6 +1,6 @@
 {
   "name": "dsh-plan-first",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DSH plugin: make every new conversation align before acting — feasibility, restated requirements, options, benefits and risks, then wait for confirmation. · 让每个新对话先对齐再开工：可行性、需求复述、方案、收益与风险，确认之后才动手。",
   "license": "MIT",
   "type": "module",

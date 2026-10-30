@@ -123,13 +123,17 @@ test('instruction keeps every part of the agreed flow', () => {
     '先对齐后开工',
     '可以直接执行',
     '必须先对齐',
+    '无痕',
+    '留痕但可逆',
+    '有影响',
+    '删除和覆盖已有文件没有灰区',
     '可行性',
     '我的理解',
     '方案',
     '收益与风险',
     '停在确认处',
     '等用户确认',
-    '只读调研可以做',
+    '授权之后不再拦',
     '不要做的事',
     '「直接做」',
     '用与用户相同的语言表达'
@@ -144,8 +148,21 @@ test('instruction keeps every part of the agreed flow', () => {
 })
 
 test('instruction forbids acting before confirmation', () => {
-  assert.ok(PLAN_FIRST_INSTRUCTION.includes('确认前不写文件'))
+  assert.ok(PLAN_FIRST_INSTRUCTION.includes('确认前不做第 3 档操作'))
   assert.ok(PLAN_FIRST_INSTRUCTION.includes('不要「顺手先做一点」'))
+})
+
+test('the three tiers are stated in order and tier 2 must announce', () => {
+  const trace = PLAN_FIRST_INSTRUCTION.indexOf('留痕但可逆')
+
+  assert.ok(PLAN_FIRST_INSTRUCTION.indexOf('无痕') < trace, 'tier 1 comes first')
+  assert.ok(trace < PLAN_FIRST_INSTRUCTION.indexOf('有影响'), 'tier 3 comes last')
+  assert.ok(PLAN_FIRST_INSTRUCTION.includes('必须先声明'), 'tier 2 must be announced')
+})
+
+test('authorisation switches the gate off', () => {
+  assert.ok(PLAN_FIRST_INSTRUCTION.includes('授权之后不再拦'))
+  assert.ok(PLAN_FIRST_INSTRUCTION.includes('不受上面的分档限制'))
 })
 
 test('instruction stays short enough to not crowd the prompt', () => {
