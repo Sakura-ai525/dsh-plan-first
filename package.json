@@ -1,0 +1,48 @@
+{
+  "name": "dsh-plan-first",
+  "version": "0.1.0",
+  "description": "DSH plugin: make every new conversation align before acting — feasibility, restated requirements, options, benefits and risks, then wait for confirmation. · 让每个新对话先对齐再开工：可行性、需求复述、方案、收益与风险，确认之后才动手。",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "plan",
+    "confirm",
+    "alignment",
+    "workflow",
+    "system-prompt"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
